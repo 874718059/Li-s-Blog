@@ -1,0 +1,17 @@
+<div id="<%= dom_id article %>" class="text-center">
+  <p class="">
+    <h1 class="font-bold text-5xl" style="color: #D30001;"><%= article.title %></h1>
+    <h1 class="text-2xl mt-2" style="font-weight: 700;"><%= article.created_at.strftime("%Y-%m-%d") %></h1>
+  </p>
+</div>
+<p class="">
+  <%= simple_format article.content %>
+</p>
+
+<style>
+  .trix-content a {
+    color: #D30001;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+</style>

@@ -1,0 +1,39 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+  <div style="display: flex;">
+    <div style="padding: 10px 20px;background-color: #c8c8c8;border-radius: 10px;margin-right: 10px"><%= link_to "All", articles_path(tag: "All") %></div>
+    <% @tags.each do |tag| %>
+      <div style="padding: 10px 20px;background-color: #c8c8c8;border-radius: 10px;margin-right: 10px"><%= link_to tag.name, articles_path(tag: tag.name) %></div>
+    <% end %>
+  </div>
+
+  <% content_for :title, "Articles" %>
+
+  <div class="flex justify-between items-center">
+    <div><h1 class="font-bold text-3xl">My Blog</h1></div>
+
+    <div>
+      <%= link_to "New article", new_article_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+      <%= link_to "Manage tags", tags_path, class: "rounded-lg py-3 mt-2 px-5 bg-blue-600 text-white block font-medium" %>
+    </div>
+  </div>
+
+  <div id="articles" class="min-w-full">
+    <table class="border-collapse w-full text-sm">
+      <thead>
+        <tr>
+        </tr>
+      </thead>
+      <tbody class="bg-white dark:bg-slate-800">
+        <% @articles.each do |article| %>
+          <tr class="">
+            <td class="pt-5 pb-5 border-b border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400 border-black dark:border-slate-600 pt-3 pb-3" style="font-size:20px;width: 158px;"><%= article.created_at.strftime("%Y-%m-%d") %></td>
+            <td class="pt-5 pb-5 border-b border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400 border-black dark:border-slate-600 pt-3 pb-3" style="color: #D30001;text-decoration: underline;font-size:30px;"><%= link_to article.title, article, style: "line-height: 1.2;-webkit-font-smoothing: antialiased;font-weight: 800;" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
